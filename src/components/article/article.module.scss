@@ -1,0 +1,101 @@
+.article {
+	max-width: 985px;
+	margin: 26px auto;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 15px 14px 10px 19px;
+  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.mainInfo {
+  display: flex;
+	margin-bottom: 4px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.articleInfo {
+  display: flex;
+	flex-direction: column;
+  justify-content: flex-start;
+}
+
+.titleAndBtn {
+	display: flex;
+}
+
+.title {
+  color: #1890ff;
+  font-size: 20px;
+  line-height: 28px;
+  margin-right: 13px;
+  font-weight: normal;
+}
+
+.likesBtn {
+  padding: 0;
+  border: none;
+  display: flex;
+  font-size: 12px;
+  line-height: 22px;
+  align-items: center;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.75);
+
+  & img {
+    margin-right: 5px;
+  }
+}
+
+.tags {
+
+}
+
+.tag {
+	font-size: 12px;
+  padding: 3px 6px;
+	margin-right: 8px;
+  line-height: 15px;
+  border-radius: 2px;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.userInfo {
+  display: flex;
+  align-items: flex-start;
+}
+
+.userName {
+	font-size: 18px;
+  line-height: 28px;
+	margin-right: 12px;
+  font-weight: normal;
+}
+
+.dateRelease {
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.description {
+	font-size: 12px;
+	line-height: 22px;
+	font-weight: normal;
+	margin-bottom: 25px;
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.avatar {
+	width: 46px;
+	height: 46px;
+	margin-left: 12px;
+	border-radius: 50%;
+}
