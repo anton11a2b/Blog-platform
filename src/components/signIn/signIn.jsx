@@ -21,7 +21,7 @@ const SignIn = () => {
   const { authErrors } = useSelector((state) => state);
 
   const onSubmit = (data) => {
-    dispatch(login(data, () => navigate('/', { replace: true })));
+    dispatch(login(data, () => navigate('/Blog-platform/', { replace: true })));
   };
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const SignIn = () => {
           Login
         </button>
         <p className={classes.account}>
-          Don’t have an account? <Link to="/sign-up">Sign Up.</Link>
+          Don’t have an account? <Link to="sign-up">Sign Up.</Link>
         </p>
       </form>
     </>

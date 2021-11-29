@@ -6,14 +6,14 @@ import classes from './header.module.scss';
 const Header = () => (
   <div>
     <header className={classes.header}>
-      <Link to="/">
+      <Link to="/Blog-platform/">
         <h1 className={classes.title}>Realworld Blog</h1>
       </Link>
       <div className={classes.btnsWrapper}>
-        <NavLink to="/sign-in" className={({ isActive }) => (isActive ? classes.active : classes.signIn)}>
+        <NavLink to="sign-in" className={({ isActive }) => (isActive ? classes.active : classes.signIn)}>
           Sign In
         </NavLink>
-        <NavLink to="/sign-up" className={({ isActive }) => (isActive ? classes.active : classes.signUp)}>
+        <NavLink to="sign-up" className={({ isActive }) => (isActive ? classes.active : classes.signUp)}>
           Sign Up
         </NavLink>
       </div>

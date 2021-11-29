@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Layout from '../layout/layout';
 import SignUp from '../signUp/signUp';
@@ -26,14 +26,13 @@ const App = () => {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/Blog-platform/" element={<Layout />}>
             <Route index element={<Articles />} />
             <Route path=":slug" element={<Article />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="sign-in" element={<SignIn />} />
             <Route path="profile" element={<EditProfile />} />
-            <Route path="articles/:slug/edit" element={<CreateArticle />} />
-            <Route path="Blog-platform" element={<Navigate to="/" replace />} />
+            <Route path=":slug/edit" element={<CreateArticle />} />
             <Route
               path="new-article"
               element={

@@ -21,7 +21,7 @@ const SignUp = () => {
   const { authErrors } = useSelector((state) => state);
 
   const onSubmit = (data) => {
-    dispatch(registration(data, () => navigate('/', { replace: true })));
+    dispatch(registration(data, () => navigate('/Blog-platform/', { replace: true })));
   };
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const SignUp = () => {
           Create
         </button>
         <p className={classes.account}>
-          Already have an account? <Link to="/sign-in">Sign In.</Link>
+          Already have an account? <Link to="sign-in">Sign In.</Link>
         </p>
       </form>
     </>

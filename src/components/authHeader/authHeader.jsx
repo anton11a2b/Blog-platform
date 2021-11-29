@@ -15,24 +15,24 @@ const AuthHeader = () => {
   const imgSrc = user.image ? user.image : icon;
 
   const onClick = () => {
-    dispatch(logOut(() => navigate('/', { replace: true })));
+    dispatch(logOut(() => navigate('/Blog-platform/', { replace: true })));
   };
 
   return (
     <div>
       <header className={classes.header}>
-        <Link to="/">
+        <Link to="/Blog-platform/">
           <h1 className={classes.title}>Realworld Blog</h1>
         </Link>
         <div className={classes.btnsWrapper}>
           <NavLink
-            to="/new-article"
+            to="new-article"
             className={({ isActive }) => (isActive ? classes.active : classes.createArticle)}
             type="button"
           >
             Create article
           </NavLink>
-          <Link className={classes.userInfo} to="/profile">
+          <Link className={classes.userInfo} to="profile">
             <p className={classes.username}>{user.username}</p>
             <img src={imgSrc} alt="avatar" />
           </Link>

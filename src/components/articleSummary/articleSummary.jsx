@@ -25,7 +25,7 @@ const ArticleSummary = ({ userName, avatar, title, likes, description, dateRelea
       <div className={classes.mainInfo}>
         <div className={classes.articleInfo}>
           <div className={classes.titleAndBtn}>
-            <Link className={classes.title} to={`/${slug}`}>
+            <Link className={classes.title} to={slug}>
               {title}
             </Link>
             <button onClick={onLiked} className={classes.likesBtn} type="button">
