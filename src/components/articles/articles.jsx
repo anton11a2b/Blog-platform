@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -22,16 +21,18 @@ const Articles = () => {
     <main className={classes.articles}>
       {articles ? (
         articles.map((article) => (
-          <Link key={article.slug} to={`/${article.slug}`}>
             <ArticleSummary
+              key={article.slug}
+              slug={article.slug}
               title={article.title}
+              tagList={article.tagList}
+              favorited={article.favorited}
               avatar={article.author.image}
               likes={article.favoritesCount}
               dateRelease={article.createdAt}
               description={article.description}
               userName={article.author.username}
             />
-          </Link>
         ))
       ) : (
         <Loader size="default" />

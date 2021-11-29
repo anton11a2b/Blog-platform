@@ -48,12 +48,12 @@
 }
 
 .tags {
-
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .tag {
 	font-size: 12px;
-  font-weight: 400;
   padding: 3px 6px;
 	margin-right: 8px;
   line-height: 15px;
@@ -75,13 +75,11 @@
 	font-size: 18px;
   line-height: 28px;
 	margin-right: 12px;
-  font-weight: normal;
 	color: rgba(0, 0, 0, 0.85);
 }
 
 .dateRelease {
   font-size: 12px;
-  font-weight: 400;
   line-height: 22px;
   color: rgba(0, 0, 0, 0.5);
 }
@@ -89,7 +87,6 @@
 .description {
 	font-size: 12px;
 	line-height: 22px;
-	font-weight: normal;
 	color: rgba(0, 0, 0, 0.75);
 }
 

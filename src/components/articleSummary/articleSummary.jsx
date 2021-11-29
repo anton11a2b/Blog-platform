@@ -1,26 +1,31 @@
 import React from 'react';
+import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import { formatDate } from '../../helpers/helpers';
-
-import icon from '../../img/Vector.svg';
+import { formatDate, getIcon } from '../../helpers/helpers';
 
 import classes from './articleSummary.module.scss';
 
-const ArticleSummary = ({ userName, avatar, title, likes, description, dateRelease }) => (
+const ArticleSummary = ({ userName, avatar, title, likes, description, dateRelease, tagList, slug, favorited }) => (
   <article className={classes.articleSummary}>
     <div className={classes.mainInfo}>
       <div className={classes.articleInfo}>
         <div className={classes.titleAndBtn}>
-          <h2 className={classes.title}>{title}</h2>
+          <Link className={classes.title} to={`/${slug}`}>
+            {title}
+          </Link>
           <button className={classes.likesBtn} type="button">
-            <img src={icon} alt="" />
+            <img src={getIcon(favorited)} alt="" />
             {likes}
           </button>
         </div>
         <div className={classes.tags}>
-          <span className={classes.tag}>Tag1</span>
-          <span className={classes.tag}>Tag2</span>
+          {tagList.map((tag) => (
+            <span key={uuid()} className={classes.tag}>
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
       <div className={classes.userInfo}>
@@ -37,20 +42,26 @@ const ArticleSummary = ({ userName, avatar, title, likes, description, dateRelea
 
 ArticleSummary.defaultProps = {
   likes: 0,
+  slug: '',
   title: '',
   avatar: '',
+  tagList: [],
   userName: '',
   description: '',
   dateRelease: '',
+  favorited: false
 };
 
 ArticleSummary.propTypes = {
-  likes: PropTypes.number,
+	likes: PropTypes.number,
+	favorited: PropTypes.bool,
+  slug: PropTypes.string,
   title: PropTypes.string,
   avatar: PropTypes.string,
   userName: PropTypes.string,
   description: PropTypes.string,
-  dateRelease: PropTypes.string,
+	dateRelease: PropTypes.string,
+  tagList: PropTypes.arrayOf(PropTypes.any),
 };
 
 export default ArticleSummary;

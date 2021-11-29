@@ -1,6 +1,6 @@
 .article {
-	max-width: 985px;
-	margin: 26px auto;
+  max-width: 985px;
+  margin: 26px auto;
   border-radius: 5px;
   background-color: #fff;
   padding: 15px 14px 10px 19px;
@@ -9,33 +9,34 @@
 
 .mainInfo {
   display: flex;
-	margin-bottom: 4px;
+  margin-bottom: 4px;
   align-items: flex-start;
   justify-content: space-between;
 }
 
 .articleInfo {
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
   justify-content: flex-start;
 }
 
 .titleAndBtn {
-	display: flex;
+  display: flex;
 }
 
 .title {
   color: #1890ff;
   font-size: 20px;
+  font-weight: 400;
   line-height: 28px;
   margin-right: 13px;
-  font-weight: normal;
 }
 
 .likesBtn {
-  padding: 0;
+	padding: 0;
   border: none;
   display: flex;
+	cursor: pointer;
   font-size: 12px;
   line-height: 22px;
   align-items: center;
@@ -48,22 +49,22 @@
 }
 
 .tags {
-
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .tag {
-	font-size: 12px;
+  font-size: 12px;
   padding: 3px 6px;
-	margin-right: 8px;
+  margin-right: 8px;
   line-height: 15px;
   border-radius: 2px;
-  font-weight: normal;
   color: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.5);
 
-	&:last-child {
-		margin-right: 0;
-	}
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .userInfo {
@@ -72,30 +73,68 @@
 }
 
 .userName {
-	font-size: 18px;
+  font-size: 18px;
   line-height: 28px;
-	margin-right: 12px;
-  font-weight: normal;
+  margin-right: 12px;
 }
 
 .dateRelease {
   font-size: 12px;
   line-height: 22px;
-  font-weight: normal;
   color: rgba(0, 0, 0, 0.5);
 }
 
+.descriptionWrapper {
+  display: flex;
+	margin: 16px 0 25px 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .description {
-	font-size: 12px;
-	line-height: 22px;
-	font-weight: normal;
-	margin-bottom: 25px;
-	color: rgba(0, 0, 0, 0.75);
+  font-size: 12px;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.btnDelete {
+	height: 32px;
+	color: #f5222d;
+	cursor: pointer;
+  font-size: 14px;
+  line-height: 22px;
+  border-radius: 5px;
+  margin-right: 12px;
+  background-color: #fff;
+  border: 1px solid #f5222d;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: #fff;
+		background-color: #f5222d;
+		border: 1px solid #f5222d;
+	}
+}
+
+.btnEdit {
+  color: #52c41a;
+  font-size: 14px;
+  padding: 6.5px 19px;
+  line-height: 22px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #52c41a;
+
+	&:hover {
+		color: #fff;
+		background-color: #52c41a;
+	}
 }
 
 .avatar {
-	width: 46px;
-	height: 46px;
-	margin-left: 12px;
-	border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: 12px;
+  border-radius: 50%;
 }

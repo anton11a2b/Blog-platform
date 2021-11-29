@@ -43,25 +43,29 @@ const SignIn = () => {
           {errors['email or password'] && <p className={classes.error}>{errors['email or password'].message}</p>}
         </div>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Email address</span>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email address"
-            {...register('email')}
-            className={errors['email or password'] || errors.email ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            Email address
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              {...register('email')}
+              className={errors['email or password'] || errors.email ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           {errors.email && <p className={classes.error}>{errors.email.message}</p>}
         </div>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Password</span>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className={errors['email or password'] || errors.password ? classes.inputFieldError : classes.inputField}
-            {...register('password')}
-          />
+          <label className={classes.inputName}>
+            Password
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className={errors['email or password'] || errors.password ? classes.inputFieldError : classes.inputField}
+              {...register('password')}
+            />
+          </label>
           {errors.password && <p className={classes.error}>{errors.password.message}</p>}
         </div>
         <button type="submit" className={classes.btnLogin} disabled={!isDirty || !isValid}>

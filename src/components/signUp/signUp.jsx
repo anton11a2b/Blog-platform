@@ -24,7 +24,7 @@ const SignUp = () => {
     dispatch(registration(data, () => navigate('/', { replace: true })));
   };
 
-	useEffect(() => {
+  useEffect(() => {
     if (authErrors) {
       Object.keys(authErrors).forEach((key) => {
         setError(key, {
@@ -40,47 +40,55 @@ const SignUp = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <h2 className={classes.title}>Create new account</h2>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Username</span>
-          <input
-            type="text"
-            name="username"
-            placeholder="username"
-            {...register('username')}
-            className={errors.username ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            Username
+            <input
+              type="text"
+              name="username"
+              placeholder="username"
+              {...register('username')}
+              className={errors.username ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           {errors.username && <p className={classes.error}>{errors.username.message}</p>}
         </div>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Email address</span>
-          <input
-            type="email"
-            name="email"
-            {...register('email')}
-            placeholder="Email address"
-            className={errors.email ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            Email address
+            <input
+              type="email"
+              name="email"
+              {...register('email')}
+              placeholder="Email address"
+              className={errors.email ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           {errors.email && <p className={classes.error}>{errors.email.message}</p>}
         </div>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Password</span>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            {...register('password')}
-            className={errors.password ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            Password
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              {...register('password')}
+              className={errors.password ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           {errors.password && <p className={classes.error}>{errors.password.message}</p>}
         </div>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Repeat Password</span>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Password"
-            {...register('confirmPassword')}
-            className={errors.confirmPassword ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            Repeat Password
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Password"
+              {...register('confirmPassword')}
+              className={errors.confirmPassword ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           {errors.confirmPassword && <p className={classes.error}>{errors.confirmPassword.message}</p>}
         </div>
         <div className={classes.inputWrapper}>

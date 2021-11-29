@@ -26,7 +26,7 @@ const AuthHeader = () => {
         </Link>
         <div className={classes.btnsWrapper}>
           <NavLink
-            to="/create-article"
+            to="/new-article"
             className={({ isActive }) => (isActive ? classes.active : classes.createArticle)}
             type="button"
           >

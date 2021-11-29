@@ -1,23 +1,39 @@
+import { Button } from 'antd';
+import { v4 as uuid } from 'uuid';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import Loader from '../loader/loader';
-import { formatDate } from '../../helpers/helpers';
-import { getArticle } from '../../redux/actions/actionCreators';
+import showDeleteConfirm from '../modal/modal';
 
-import icon from '../../img/Vector.svg';
+import { formatDate, getIcon } from '../../helpers/helpers';
+import { getArticle, deleteArticle, favorite, unfavorite } from '../../redux/actions/actionCreators';
 
 import classes from './article.module.scss';
 
 const Article = () => {
-  const { id } = useParams();
-	const dispatch = useDispatch();
-  const { article } = useSelector((state) => state);
+  const { slug } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+	const { article, user, isFavorite } = useSelector((state) => state);
+	const liked = isFavorite !== null ? isFavorite : article?.favorited;
+
+  const onDelete = () => {
+    dispatch(deleteArticle(slug, () => navigate('/', { replace: true })));
+  };
+
+  const onLiked = () => {
+    if (article?.favorited) {
+      dispatch(unfavorite(slug));
+    } else {
+      dispatch(favorite(slug));
+    }
+  };
 
   useEffect(() => {
-      dispatch(getArticle(id));
-  }, [dispatch, id]);
+    dispatch(getArticle(slug));
+  }, [dispatch, slug]);
 
   return article ? (
     <article className={classes.article}>
@@ -25,14 +41,17 @@ const Article = () => {
         <div className={classes.articleInfo}>
           <div className={classes.titleAndBtn}>
             <h2 className={classes.title}>{article.title}</h2>
-            <button className={classes.likesBtn} type="button">
-              <img src={icon} alt="" />
+            <button onClick={onLiked} className={classes.likesBtn} type="button">
+              <img src={getIcon(liked)} alt="" />
               {article.favoritesCount}
             </button>
           </div>
           <div className={classes.tags}>
-            <span className={classes.tag}>Tag1</span>
-            <span className={classes.tag}>Tag2</span>
+            {article.tagList.map((tag) => (
+              <span key={uuid()} className={classes.tag}>
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
         <div className={classes.userInfo}>
@@ -43,7 +62,19 @@ const Article = () => {
           <img className={classes.avatar} src={article.author.image} alt="avatar" />
         </div>
       </div>
-      <p className={classes.description}>{article.description}</p>
+      <div className={classes.descriptionWrapper}>
+        <p className={classes.description}>{article.description}</p>
+        {user ? (
+          <div className={classes.buttons}>
+            <Button type="dashed" className={classes.btnDelete} onClick={() => showDeleteConfirm(onDelete)}>
+              Delete
+            </Button>
+            <Link to={`/articles/${slug}/edit`} state={article} className={classes.btnEdit}>
+              Edit
+            </Link>
+          </div>
+        ) : null}
+      </div>
       <p>{article.body}</p>
     </article>
   ) : (

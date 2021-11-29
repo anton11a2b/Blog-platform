@@ -9,8 +9,8 @@
 
 .title {
   font-size: 18px;
+  font-weight: 400;
   line-height: 28px;
-  font-weight: normal;
 
   &:hover {
     color: #1890ff;
@@ -27,7 +27,6 @@
 .signIn,
 .signUp {
   font-size: 18px;
-  font-weight: 400;
   line-height: 28px;
   background-color: #fff;
   padding: 6px 18px 10px;
@@ -42,7 +41,6 @@
 .active {
   color: #52c41a;
   font-size: 18px;
-  font-weight: 400;
   line-height: 28px;
   border-radius: 5px;
   padding: 6px 18px 10px;

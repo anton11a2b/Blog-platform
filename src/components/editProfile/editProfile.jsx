@@ -10,21 +10,21 @@ import { editProfile } from '../../redux/actions/actionCreators';
 import classes from './editProfile.module.scss';
 
 const EditProfile = () => {
-	const {
+  const {
     setError,
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm({ mode: 'onChange', resolver: yupResolver(scheme) });
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const { authErrors, user } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { authErrors, user } = useSelector((state) => state);
 
   const onSubmit = (data) => {
-		dispatch(editProfile(data, user, () => navigate('/', { replace: true })));
-	};
+    dispatch(editProfile(data, user, () => navigate('/', { replace: true })));
+  };
 
-	useEffect(() => {
+  useEffect(() => {
     if (authErrors) {
       Object.keys(authErrors).forEach((key) => {
         setError(key, {
@@ -40,50 +40,58 @@ const EditProfile = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <h2 className={classes.title}>Edit Profile</h2>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Username</span>
-          <input
-            type="text"
-            name="username"
-            defaultValue={user.username}
-            placeholder="username"
-            {...register('username')}
-            className={errors.username ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            Username
+            <input
+              type="text"
+              name="username"
+              defaultValue={user.username}
+              placeholder="username"
+              {...register('username')}
+              className={errors.username ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           <p className={classes.error}>{errors?.username?.message}</p>
         </div>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Email address</span>
-          <input
-            type="email"
-            name="email"
-            defaultValue={user.email}
-            {...register('email')}
-            placeholder="Email address"
-            className={errors.email ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            Email address
+            <input
+              type="email"
+              name="email"
+              defaultValue={user.email}
+              {...register('email')}
+              placeholder="Email address"
+              className={errors.email ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           <p className={classes.error}>{errors?.email?.message}</p>
         </div>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>New password</span>
-          <input
-            type="password"
-            name="password"
-            {...register('password')}
-            placeholder="New password"
-            className={errors.password ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            New password
+            <input
+              type="password"
+              name="password"
+              {...register('password')}
+              placeholder="New password"
+              className={errors.password ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           <p className={classes.error}>{errors?.password?.message}</p>
         </div>
         <div className={classes.inputWrapper}>
-          <span className={classes.inputName}>Avatar image (URL)</span>
-          <input
-            type="text"
-            name="image"
-            defaultValue={user.image}
-            {...register('image')}
-            placeholder="Avatar image"
-            className={errors.image ? classes.inputFieldError : classes.inputField}
-          />
+          <label className={classes.inputName}>
+            Avatar image (URL)
+            <input
+              type="text"
+              name="image"
+              defaultValue={user.image}
+              {...register('image')}
+              placeholder="Avatar image"
+              className={errors.image ? classes.inputFieldError : classes.inputField}
+            />
+          </label>
           <p className={classes.error}>{errors?.image?.message}</p>
         </div>
         <button className={classes.btnSave} type="submit" disabled={!isDirty || !isValid}>

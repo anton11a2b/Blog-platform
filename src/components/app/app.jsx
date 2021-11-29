@@ -11,6 +11,7 @@ import EditProfile from '../editProfile/editProfile';
 import CreateArticle from '../createArticle/createArticle';
 
 import { getUser } from '../../redux/actions/actionCreators';
+import ArticleFormContainer from '../../hoc/articleFormContainer';
 
 import './app.module.scss';
 
@@ -27,11 +28,19 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Articles />} />
-            <Route path="/:id" element={<Article />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/profile" element={<EditProfile />} />
-            <Route path="/create-article" element={<CreateArticle />} />
+            <Route path=":slug" element={<Article />} />
+            <Route path="sign-up" element={<SignUp />} />
+            <Route path="sign-in" element={<SignIn />} />
+            <Route path="profile" element={<EditProfile />} />
+            <Route path="articles/:slug/edit" element={<CreateArticle />} />
+            <Route
+              path="new-article"
+              element={
+                <ArticleFormContainer>
+                  <CreateArticle />
+                </ArticleFormContainer>
+              }
+            />
           </Route>
         </Routes>
       </Router>
