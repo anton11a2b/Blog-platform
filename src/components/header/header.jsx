@@ -6,7 +6,7 @@ import classes from './header.module.scss';
 const Header = () => (
   <div>
     <header className={classes.header}>
-      <Link to="/Blog-platform/">
+      <Link to="/">
         <h1 className={classes.title}>Realworld Blog</h1>
       </Link>
       <div className={classes.btnsWrapper}>

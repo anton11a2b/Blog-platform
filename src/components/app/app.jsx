@@ -26,7 +26,7 @@ const App = () => {
     <>
       <Router>
         <Routes>
-          <Route path="/Blog-platform/" element={<Layout />}>
+          <Route path="/" element={<Layout />}>
             <Route index element={<Articles />} />
             <Route path=":slug" element={<Article />} />
             <Route path="sign-up" element={<SignUp />} />

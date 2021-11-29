@@ -21,7 +21,7 @@ const SignUp = () => {
   const { authErrors } = useSelector((state) => state);
 
   const onSubmit = (data) => {
-    dispatch(registration(data, () => navigate('/Blog-platform/', { replace: true })));
+    dispatch(registration(data, () => navigate('/', { replace: true })));
   };
 
   useEffect(() => {

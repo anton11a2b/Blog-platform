@@ -43,9 +43,9 @@ const CreateArticle = () => {
     const tagList = parseStrings(data.tagList);
     const newData = { ...data, tagList };
     if (slug) {
-      dispatch(editArticle(newData, slug, () => navigate('/Blog-platform/', { replace: true })));
+      dispatch(editArticle(newData, slug, () => navigate('/', { replace: true })));
     } else {
-      dispatch(createArticle(newData, () => navigate('/Blog-platform/', { replace: true })));
+      dispatch(createArticle(newData, () => navigate('/', { replace: true })));
     }
   };
 

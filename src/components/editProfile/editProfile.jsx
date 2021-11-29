@@ -21,7 +21,7 @@ const EditProfile = () => {
   const { authErrors, user } = useSelector((state) => state);
 
   const onSubmit = (data) => {
-    dispatch(editProfile(data, user, () => navigate('/Blog-platform/', { replace: true })));
+    dispatch(editProfile(data, user, () => navigate('/', { replace: true })));
   };
 
   useEffect(() => {

@@ -140,8 +140,10 @@ export const getUser = () => async (dispatch) => {
     } else {
       dispatch({ type: LOG_OUT });
     }
-  } catch (err) {
-    dispatch({ type: LOG_OUT });
+	} catch (err) {
+		if (err.response.status === 500) {
+			dispatch({ type: LOG_OUT });
+    }
   }
 };
 

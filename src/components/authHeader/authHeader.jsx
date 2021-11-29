@@ -15,13 +15,13 @@ const AuthHeader = () => {
   const imgSrc = user.image ? user.image : icon;
 
   const onClick = () => {
-    dispatch(logOut(() => navigate('/Blog-platform/', { replace: true })));
+    dispatch(logOut(() => navigate('/', { replace: true })));
   };
 
   return (
     <div>
       <header className={classes.header}>
-        <Link to="/Blog-platform/">
+        <Link to="/">
           <h1 className={classes.title}>Realworld Blog</h1>
         </Link>
         <div className={classes.btnsWrapper}>

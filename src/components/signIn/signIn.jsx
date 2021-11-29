@@ -21,7 +21,7 @@ const SignIn = () => {
   const { authErrors } = useSelector((state) => state);
 
   const onSubmit = (data) => {
-    dispatch(login(data, () => navigate('/Blog-platform/', { replace: true })));
+    dispatch(login(data, () => navigate('/', { replace: true })));
   };
 
   useEffect(() => {

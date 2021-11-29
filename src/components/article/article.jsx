@@ -21,7 +21,7 @@ const Article = () => {
   const liked = isFavorite !== null ? isFavorite : article?.favorited;
 
   const onDelete = () => {
-    dispatch(deleteArticle(slug, () => navigate('/Blog-platform/', { replace: true })));
+    dispatch(deleteArticle(slug, () => navigate('/', { replace: true })));
   };
 
   const onLiked = () => {
@@ -70,7 +70,7 @@ const Article = () => {
             <Button type="dashed" className={classes.btnDelete} onClick={() => showDeleteConfirm(onDelete)}>
               Delete
             </Button>
-            <Link to="edit" state={article} className={classes.btnEdit}>
+            <Link to={`${slug}/edit`} state={article} className={classes.btnEdit}>
               Edit
             </Link>
           </div>
