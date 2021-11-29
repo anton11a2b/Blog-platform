@@ -9,14 +9,14 @@ import icon from '../../img/avatar.jpg';
 import classes from './authHeader.module.scss';
 
 const AuthHeader = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state);
-	const imgSrc = user.image ? user.image : icon;
+  const imgSrc = user.image ? user.image : icon;
 
-	const onClick = () => {
-		dispatch(logOut(() => navigate('/', { replace: true })));
-	}
+  const onClick = () => {
+    dispatch(logOut(() => navigate('/', { replace: true })));
+  };
 
   return (
     <div>

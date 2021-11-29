@@ -11,11 +11,15 @@ import {
   REGISTRATION,
   EDIT_PROFILE,
   EMPTY_ARTICLES,
+  SET_PAGE_NUMBER,
+  GET_CURRENT_ARTICLE,
 } from './actions';
 
 import ApiServices from '../../api/api';
 
 const apiServices = new ApiServices();
+
+export const setPageNumber = (pageNumber) => ({ type: SET_PAGE_NUMBER, payload: pageNumber });
 
 export const editArticle = (data, slug, cb) => async (dispatch) => {
   try {
@@ -32,15 +36,27 @@ export const editArticle = (data, slug, cb) => async (dispatch) => {
   }
 };
 
-export const getArticles = () => async (dispatch) => {
-	try {
-		dispatch({ type: EMPTY_ARTICLES });
+export const getArticles = (currentPage) => async (dispatch) => {
+  try {
+    dispatch({ type: EMPTY_ARTICLES });
 
-    const articles = await apiServices.getArticles();
+    const articles = await apiServices.getArticles(currentPage);
 
     if (articles.length !== 0) {
       dispatch({ type: GET_ARTICLES, payload: articles.articles });
-		}
+    }
+  } catch (err) {
+    // console.log(err);
+  }
+};
+
+export const getCurrentArticle = () => async (dispatch) => {
+  try {
+    const currentArticle = await apiServices.getCurrentArticle();
+
+    if (currentArticle.length !== 0) {
+      dispatch({ type: GET_CURRENT_ARTICLE, payload: currentArticle.articlesCount });
+    }
   } catch (err) {
     // console.log(err);
   }
@@ -49,10 +65,10 @@ export const getArticles = () => async (dispatch) => {
 export const logOut = (cb) => async (dispatch) => {
   Cookies.remove('auth-token');
 
-  cb();
-  // await getArticles();
+	cb();
 
   dispatch({ type: LOG_OUT });
+	dispatch(getArticles(1));
 };
 
 export const editProfile = (data, user, cb) => async (dispatch) => {
@@ -168,11 +184,11 @@ export const deleteArticle = (slug, cb) => async (dispatch) => {
 
 export const favorite = (slug) => async (dispatch) => {
   try {
-		dispatch({ type: FAVORITED });
+    dispatch({ type: FAVORITED });
 
-		const article = await apiServices.favorite(slug);
+    const article = await apiServices.favorite(slug);
 
-		dispatch({ type: GET_ARTICLE, payload: article.article });
+    dispatch({ type: GET_ARTICLE, payload: article.article });
   } catch (err) {
     // console.log(err);
   }
@@ -182,7 +198,7 @@ export const unfavorite = (slug) => async (dispatch) => {
   try {
     dispatch({ type: UNFAVORITED });
 
-		const article = await apiServices.unfavorite(slug);
+    const article = await apiServices.unfavorite(slug);
 
     dispatch({ type: GET_ARTICLE, payload: article.article });
   } catch (err) {

@@ -2,7 +2,7 @@ import axiosInstance from './axiosInstance';
 
 const endpoints = {
   getUser: () => axiosInstance.get('user'),
-  getArticles: () => axiosInstance.get('articles'),
+  getCurrentArticle: () => axiosInstance.get('articles'),
   getArticle: (slug) => axiosInstance.get(`articles/${slug}`),
   deleteArticle: (slug) => axiosInstance.delete(`articles/${slug}`),
   favorite: (slug) => axiosInstance.post(`articles/${slug}/favorite`),
@@ -12,6 +12,7 @@ const endpoints = {
   registration: (data) => axiosInstance.post('users', { user: { ...data } }),
   createArticle: (data) => axiosInstance.post('articles', { article: { ...data } }),
   editArticle: (data, slug) => axiosInstance.put(`articles/${slug}`, { article: { ...data } }),
+  getArticles: (currentPage) => axiosInstance.get(`articles?limit=5&offset=${currentPage * 5 - 5}`),
 };
 
 export default endpoints;

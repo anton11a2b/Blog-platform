@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import { v4 as uuid } from 'uuid';
 import React, { useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
@@ -16,8 +17,8 @@ const Article = () => {
   const { slug } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-	const { article, user, isFavorite } = useSelector((state) => state);
-	const liked = isFavorite !== null ? isFavorite : article?.favorited;
+  const { article, user, isFavorite } = useSelector((state) => state);
+  const liked = isFavorite !== null ? isFavorite : article?.favorited;
 
   const onDelete = () => {
     dispatch(deleteArticle(slug, () => navigate('/', { replace: true })));
@@ -41,7 +42,7 @@ const Article = () => {
         <div className={classes.articleInfo}>
           <div className={classes.titleAndBtn}>
             <h2 className={classes.title}>{article.title}</h2>
-            <button onClick={onLiked} className={classes.likesBtn} type="button">
+            <button disabled={!user} onClick={onLiked} className={classes.likesBtn} type="button">
               <img src={getIcon(liked)} alt="" />
               {article.favoritesCount}
             </button>
@@ -75,7 +76,7 @@ const Article = () => {
           </div>
         ) : null}
       </div>
-      <p>{article.body}</p>
+      <ReactMarkdown>{article.body}</ReactMarkdown>
     </article>
   ) : (
     <Loader size="default" />

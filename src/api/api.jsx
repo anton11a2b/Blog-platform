@@ -21,7 +21,17 @@ export default class ApiServices {
     return res.data;
   }
 
-  async getArticles() {
+  async getArticles(currentPage) {
+    const res = await endpoints.getArticles(currentPage);
+
+    if (res.status >= 400) {
+      throw new Error();
+    }
+
+    return res.data;
+  }
+
+  async getCurrentArticle() {
     const res = await endpoints.getArticles();
 
     if (res.status >= 400) {

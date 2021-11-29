@@ -15,7 +15,7 @@ function showDeleteConfirm(cb) {
     title: 'Are you sure to delete this article?',
     style: { position: 'absolute', right: 0, fontFamily: 'Roboto' },
     onOk() {
-			cb();
+      cb();
     },
   });
 }

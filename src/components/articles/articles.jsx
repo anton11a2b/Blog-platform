@@ -5,39 +5,41 @@ import Loader from '../loader/loader';
 import Paginator from '../pagination/pagination';
 import ArticleSummary from '../articleSummary/articleSummary';
 
-import { getArticles } from '../../redux/actions/actionCreators';
+import { getArticles, getCurrentArticle } from '../../redux/actions/actionCreators';
 
 import classes from './articles.module.scss';
 
 const Articles = () => {
-	const dispatch = useDispatch();
-  const { articles } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { articles, currentArticle, pageNumber, user } = useSelector((state) => state);
+  const auth = user ? articles : [];
 
   useEffect(() => {
-      dispatch(getArticles());
-  }, [dispatch ]);
+    dispatch(getArticles(pageNumber));
+    dispatch(getCurrentArticle());
+  }, [dispatch, pageNumber]);
 
   return (
     <main className={classes.articles}>
-      {articles ? (
-        articles.map((article) => (
-            <ArticleSummary
-              key={article.slug}
-              slug={article.slug}
-              title={article.title}
-              tagList={article.tagList}
-              favorited={article.favorited}
-              avatar={article.author.image}
-              likes={article.favoritesCount}
-              dateRelease={article.createdAt}
-              description={article.description}
-              userName={article.author.username}
-            />
+      {articles && currentArticle ? (
+        auth.map((article) => (
+          <ArticleSummary
+            key={article.slug}
+            slug={article.slug}
+            title={article.title}
+            tagList={article.tagList}
+            avatar={article.author.image}
+            likes={article.favoritesCount}
+            isFavorited={article.favorited}
+            dateRelease={article.createdAt}
+            description={article.description}
+            userName={article.author.username}
+          />
         ))
       ) : (
         <Loader size="default" />
       )}
-      <Paginator disabled={articles} total={articles?.length} />
+      <Paginator hasArticles={Boolean(articles)} total={currentArticle} />
     </main>
   );
 };
