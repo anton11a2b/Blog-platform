@@ -51,8 +51,9 @@
   width: 319px;
   height: 40px;
   border: none;
-  color: #ffffff;
   margin: 9px 0;
+  color: #ffffff;
+	cursor: pointer;
   font-size: 16px;
   line-height: 24px;
   border-radius: 4px;
@@ -64,8 +65,8 @@
   }
 
 	&:disabled {
-    background-color: #333;
-  }
+		cursor: default;
+	}
 }
 
 .error {

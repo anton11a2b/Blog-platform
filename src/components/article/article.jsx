@@ -70,7 +70,7 @@ const Article = () => {
             <Button type="dashed" className={classes.btnDelete} onClick={() => showDeleteConfirm(onDelete)}>
               Delete
             </Button>
-            <Link to={`${slug}/edit`} state={article} className={classes.btnEdit}>
+            <Link to={`/${slug}/edit`} state={article} className={classes.btnEdit}>
               Edit
             </Link>
           </div>

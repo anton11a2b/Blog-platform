@@ -73,7 +73,7 @@ export const logOut = (cb) => async (dispatch) => {
 
 export const editProfile = (data, user, cb) => async (dispatch) => {
   try {
-    const { username, email, image } = data;
+		const { username, email, image } = data;
     const userData = await apiServices.editProfile({ ...user, username, email, image });
 
     cb();

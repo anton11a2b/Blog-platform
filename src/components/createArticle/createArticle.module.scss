@@ -65,10 +65,20 @@
 .btnCreate {
   color: #fff;
   font-size: 16px;
+	cursor: pointer;
   line-height: 24px;
   border-radius: 4px;
   background: #1890ff;
   padding: 8px 141.5px;
+
+	&:active,
+  &:focus {
+    outline: none;
+  }
+
+	&:disabled {
+		cursor: default;
+	}
 }
 
 .btnDelete {

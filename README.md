@@ -1,1 +1,1 @@
-https://blog-beige-chi.vercel.app/
+https://blog-hazel-tau.vercel.app/
