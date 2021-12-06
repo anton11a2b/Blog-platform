@@ -28,7 +28,7 @@ const AuthHeader = () => {
           <NavLink
             to="new-article"
             className={({ isActive }) => (isActive ? classes.active : classes.createArticle)}
-            type="button"
+            // state={null}
           >
             Create article
           </NavLink>

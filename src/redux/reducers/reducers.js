@@ -13,15 +13,7 @@ import {
   GET_CURRENT_ARTICLE,
 } from '../actions/actions';
 
-const initialState = {
-  user: null,
-	pageNumber: 1,
-  article: null,
-  articles: null,
-  authErrors: null,
-	isFavorite: null,
-  currentArticle: null,
-};
+import initialState from '../../initialState'
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

@@ -4,9 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-import scheme from './validation';
-import { parseStrings, parseObjects } from '../../helpers/helpers';
 import { createArticle, editArticle } from '../../redux/actions/actionCreators';
+import { parseStrings, parseObjects, createArticleScheme } from '../../util/util';
 
 import classes from './createArticle.module.scss';
 
@@ -31,7 +30,7 @@ const CreateArticle = () => {
     formState: { errors, isDirty, isValid },
   } = useForm({
     mode: 'onChange',
-    resolver: yupResolver(scheme),
+    resolver: yupResolver(createArticleScheme),
     defaultValues: { tagList: parseObjects(tagList) },
   });
   const { fields, append, remove } = useFieldArray({

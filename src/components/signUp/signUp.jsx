@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSelector, useDispatch } from 'react-redux';
 
-import scheme from './validation';
+import { signUpScheme } from '../../util/util';
 import { registration } from '../../redux/actions/actionCreators';
 
 import classes from './signUp.module.scss';
@@ -15,7 +15,7 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid },
-  } = useForm({ mode: 'onChange', resolver: yupResolver(scheme) });
+  } = useForm({ mode: 'onChange', resolver: yupResolver(signUpScheme) });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { authErrors } = useSelector((state) => state);

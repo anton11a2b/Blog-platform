@@ -8,7 +8,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import Loader from '../loader/loader';
 import showDeleteConfirm from '../modal/modal';
 
-import { formatDate, getIcon } from '../../helpers/helpers';
+import { formatDate, getIcon } from '../../util/util';
 import { getArticle, deleteArticle, favorite, unfavorite } from '../../redux/actions/actionCreators';
 
 import classes from './article.module.scss';

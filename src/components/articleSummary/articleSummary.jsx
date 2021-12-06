@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { formatDate, getIcon } from '../../helpers/helpers';
+import { formatDate, getIcon } from '../../util/util';
 import { favorite, unfavorite } from '../../redux/actions/actionCreators';
 
 import classes from './articleSummary.module.scss';

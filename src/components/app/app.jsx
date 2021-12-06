@@ -32,15 +32,8 @@ const App = () => {
             <Route path="sign-up" element={<SignUp />} />
             <Route path="sign-in" element={<SignIn />} />
             <Route path="profile" element={<EditProfile />} />
-            <Route path=":slug/edit" element={<CreateArticle />} />
-            <Route
-              path="new-article"
-              element={
-                <ArticleFormContainer>
-                  <CreateArticle />
-                </ArticleFormContainer>
-              }
-            />
+            <Route path=":slug/edit" element={<ArticleFormContainer />} />
+            <Route path="new-article" element={<CreateArticle />} />
           </Route>
         </Routes>
       </Router>
